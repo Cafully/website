@@ -30,10 +30,12 @@ jobs:
         uses: borales/actions-yarn@v4
         with:
           cmd: docs:build
-      - uses: actions/configure-pages@v2
-      - uses: actions/upload-pages-artifact@v1
-        with:
-          path: src/.vitepress/dist
       - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v1
+        uses: peaceiris/actions-gh-pages@v3
+        # If you're changing the branch from main,
+        # also change the `main` in `refs/heads/main`
+        # below accordingly.
+        if: ${{ github.ref == 'refs/heads/master' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./src/.vitepress/dist
