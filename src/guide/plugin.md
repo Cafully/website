@@ -1,6 +1,6 @@
 # Plugin
 
-实现一个简单的插件,在插件被加载时输出一条日志
+Custom a simple plugin that print a log when the plugin is loading
 
 ## Install
 
